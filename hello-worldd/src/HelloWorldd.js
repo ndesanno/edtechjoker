@@ -1,5 +1,7 @@
 import { html, css, LitElement } from 'lit';
 
+// add a decrease butoon that wont go past zero
+
 export class HelloWorldd extends LitElement {
   static get styles() {
     return css`
@@ -28,10 +30,17 @@ export class HelloWorldd extends LitElement {
     this.counter += 1;
   }
 
+  __decrease(){
+    if(this.counter > 0){
+      this.counter -= 1;
+    }
+  }
+
   render() {
     return html`
       <h2>${this.title} Nr. ${this.counter}!</h2>
       <button @click=${this.__increment}>increment</button>
+      <button @click=${this.__decrease}>decrease</button>
     `;
   }
 }
